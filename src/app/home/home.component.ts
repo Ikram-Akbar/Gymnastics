@@ -124,7 +124,7 @@ export class HomeComponent implements OnInit {
     this.weight = this.formData.userWeight;
     this.height = this.formData.userHeight;
     this.calcBMI = (this.weight / (this.height * 2));
-    this.formData.value.reset("")
+    this.userForm.reset()
   
   
   }
