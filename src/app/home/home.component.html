@@ -1,0 +1,240 @@
+<!-- home component start here  -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 mt-5">
+      <!-- Form -->
+      <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+        <!-- name -->
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Your Name</label>
+          <input
+            type="text"
+            placeholder="name"
+            class="form-control"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+            required
+            formControlName="userName"
+            maxlength="40"
+            minlength="6"
+          />
+          <!-- For Error message -->
+          <div
+            *ngIf="userName?.invalid && (userName?.dirty || userName?.touched)"
+          >
+            <div *ngIf="userName?.hasError('required')" class="text-danger">
+              Username is required
+            </div>
+            <div *ngIf="userName?.hasError('minlength')" class="text-danger">
+              Username must at least 6 characters
+            </div>
+            <div *ngIf="userName?.hasError('maxlength')" class="text-danger">
+              Username at most 40 characters
+            </div>
+          </div>
+        </div>
+        <!-- age -->
+        <div class="mb-3">
+          <label for="age">Your age</label>
+          <input
+            type="number"
+            class="form-control"
+            placeholder="Age"
+            required
+            formControlName="userAge"
+          />
+          <!-- For Error message -->
+          <div *ngIf="userAge?.invalid && (userAge?.dirty || userAge?.touched)">
+            <div *ngIf="userAge?.hasError('required')" class="text-danger">
+              Age is required
+            </div>
+          </div>
+        </div>
+        <!-- Gender -->
+        <div class="mb-3">
+          <label>Gender</label>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="userGender"
+              id="exampleRadios1"
+              value="male"
+              formControlName="userGender"
+              required
+            />
+            <label class="form-check-label" for="exampleRadios1"> Male </label>
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="userGender"
+              id="exampleRadios2"
+              value="female"
+              formControlName="userGender"
+              required
+            />
+            <label class="form-check-label" for="exampleRadios2">
+              Female
+            </label>
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="userGender"
+              id="exampleRadios3"
+              value="other"
+              formControlName="userGender"
+              required
+            />
+            <label class="form-check-label" for="exampleRadios3"> Other </label>
+          </div>
+           
+
+
+        </div>
+        <!-- phone number -->
+        <div class="mb-3">
+          <label for="phone">Enter a phone number:</label><br /><br />
+          <input
+            class="form-control"
+            type="tel"
+            id="phone"
+            name="phone"
+            placeholder="+880 "
+            required
+            formControlName="userPhone"
+          />
+
+          <!-- For Error message -->
+          <div
+            *ngIf="
+              userPhone?.invalid && (userPhone?.dirty || userPhone?.touched)
+            "
+          >
+            <div *ngIf="userPhone?.hasError('required')" class="text-danger">
+              Phone is required
+            </div>
+            <div *ngIf="userPhone?.hasError('pattern')" class="text-danger">
+              Number start with +880 or 880
+            </div>
+          </div>
+        </div>
+        <!-- Email address -->
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label"
+            >Email address</label
+          >
+          <input
+            type="email"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder="name@example.com"
+            formControlName="userEmail"
+            required
+          />
+
+          <!-- For Error message -->
+          <div
+            *ngIf="
+              userEmail?.invalid && (userEmail?.dirty || userEmail?.touched)
+            "
+          >
+            <div *ngIf="userEmail?.hasError('required')" class="text-danger">
+              Email is required
+            </div>
+            <div *ngIf="userEmail?.hasError('pattern')" class="text-danger">
+              Enter an valid emil
+            </div>
+          </div>
+        </div>
+
+        <!-- height -->
+        <div class="mb-3">
+          <label for="height"
+            >Height in <span class="text-primary fw-semibold">Meter</span>
+          </label>
+          <input
+            type="number"
+            class="form-control"
+            required
+            formControlName="userHeight"
+          />
+
+
+          <!-- For Error message -->
+          <div *ngIf="userHeight?.invalid && (userHeight?.dirty || userHeight?.touched)">
+            <div *ngIf="userHeight?.hasError('required')" class="text-danger">
+            Height  is required
+            </div>
+          </div>
+        </div>
+
+     
+
+        <!-- weight -->
+        <div class="mb-3">
+          <label for="weight"
+            >Weight in <span class="text-primary fw-semibold">KG</span>
+          </label>
+          <input
+            type="number"
+            class="form-control"
+            required
+            formControlName="userWeight"
+          />
+          <!-- For Error message -->
+          <div *ngIf="userWeight?.invalid && (userWeight?.dirty || userWeight?.touched)">
+            <div *ngIf="userWeight?.hasError('required')" class="text-danger">
+            weight  is required
+            </div>
+          </div>
+        </div>
+
+        <!-- 
+            for checking value in json 
+            <p> {{values.value|json }} </p> 
+        -->
+
+        <!-- <p> {{userForm.value | json}} </p>  -->
+
+        <button type="submit" class="btn btn-primary" [disabled]="userForm.invalid">Submit</button>
+      </form>
+    </div>
+    <div class="col-md-8 g-5 mt-5">
+      <div class="card text-bg-light mb-3">
+        <div class="card-header">User Information</div>
+        <div class="card-body">
+          <h5 class="card-title">Name: {{ formData.userName }}</h5>
+          <h6 class="card-title">Age: {{ formData.userAge }}</h6>
+          <h6 class="card-title">Gender: {{ formData.userGender }}</h6>
+          <h6 class="card-title">Mobile: {{ formData.userPhone }}</h6>
+          <h6 class="card-title">Email: {{ formData.userEmail }}</h6>
+          <h6 class="card-title">Height: {{ formData.userHeight }}</h6>
+          <h6 class="card-title">Weight: {{ formData.userWeight }}</h6>
+          <p class="card-text">
+            Your BMI is :
+            {{ calcBMI?.toFixed(2) }}
+          </p>
+          <!-- Error message for BMI -->
+          <div>
+            <div *ngIf="calcBMI > 25" class="text-danger fw-bold">
+              BMI is overweight, Please start workout
+            </div>
+            <div
+              *ngIf="calcBMI < 25 && calcBMI > 16"
+              class="text-success fw-semibold"
+            >
+              BMI is Perfect
+            </div>
+            <div *ngIf="calcBMI < 16" class="text-warning fw-semibold">
+              BMI is underweight
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
