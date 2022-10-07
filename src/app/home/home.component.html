@@ -3,7 +3,11 @@
   <div class="row">
     <div class="col-md-4 mt-5">
       <!-- Form -->
-      <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+      <form 
+      [formGroup]="userForm"
+       (ngSubmit)="onSubmit()"
+       
+       >
         <!-- name -->
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">Your Name</label>
@@ -19,7 +23,7 @@
             minlength="6"
           />
           <!-- For Error message -->
-          <div
+          <!-- <div
             *ngIf="userName?.invalid && (userName?.dirty || userName?.touched)"
           >
             <div *ngIf="userName?.hasError('required')" class="text-danger">
@@ -31,7 +35,7 @@
             <div *ngIf="userName?.hasError('maxlength')" class="text-danger">
               Username at most 40 characters
             </div>
-          </div>
+          </div> -->
         </div>
         <!-- age -->
         <div class="mb-3">
@@ -44,11 +48,11 @@
             formControlName="userAge"
           />
           <!-- For Error message -->
-          <div *ngIf="userAge?.invalid && (userAge?.dirty || userAge?.touched)">
+          <!-- <div *ngIf="userAge?.invalid && (userAge?.dirty || userAge?.touched)">
             <div *ngIf="userAge?.hasError('required')" class="text-danger">
               Age is required
             </div>
-          </div>
+          </div> -->
         </div>
         <!-- Gender -->
         <div class="mb-3">
@@ -109,7 +113,7 @@
           />
 
           <!-- For Error message -->
-          <div
+          <!-- <div
             *ngIf="
               userPhone?.invalid && (userPhone?.dirty || userPhone?.touched)
             "
@@ -120,7 +124,7 @@
             <div *ngIf="userPhone?.hasError('pattern')" class="text-danger">
               Number start with +880 or 880
             </div>
-          </div>
+          </div> -->
         </div>
         <!-- Email address -->
         <div class="mb-3">
@@ -137,7 +141,7 @@
           />
 
           <!-- For Error message -->
-          <div
+          <!-- <div
             *ngIf="
               userEmail?.invalid && (userEmail?.dirty || userEmail?.touched)
             "
@@ -148,7 +152,7 @@
             <div *ngIf="userEmail?.hasError('pattern')" class="text-danger">
               Enter an valid emil
             </div>
-          </div>
+          </div> -->
         </div>
 
         <!-- height -->
@@ -165,11 +169,11 @@
 
 
           <!-- For Error message -->
-          <div *ngIf="userHeight?.invalid && (userHeight?.dirty || userHeight?.touched)">
+          <!-- <div *ngIf="userHeight?.invalid && (userHeight?.dirty || userHeight?.touched)">
             <div *ngIf="userHeight?.hasError('required')" class="text-danger">
             Height  is required
             </div>
-          </div>
+          </div> -->
         </div>
 
      
@@ -186,11 +190,11 @@
             formControlName="userWeight"
           />
           <!-- For Error message -->
-          <div *ngIf="userWeight?.invalid && (userWeight?.dirty || userWeight?.touched)">
+          <!-- <div *ngIf="userWeight?.invalid && (userWeight?.dirty || userWeight?.touched)">
             <div *ngIf="userWeight?.hasError('required')" class="text-danger">
             weight  is required
             </div>
-          </div>
+          </div> -->
         </div>
 
         <!-- 
@@ -200,11 +204,14 @@
 
         <!-- <p> {{userForm.value | json}} </p>  -->
 
-        <button type="submit" class="btn btn-primary" [disabled]="userForm.invalid">Submit</button>
+        <button type="submit" class="btn btn-primary" >Submit</button>
+        
       </form>
     </div>
     <div class="col-md-8 g-5 mt-5">
-      <div class="card text-bg-light mb-3">
+      <div class="card text-bg-light mb-3"
+      *ngIf="userForm.disable"
+      >
         <div class="card-header">User Information</div>
         <div class="card-body">
           <h5 class="card-title">Name: {{ formData.userName }}</h5>
@@ -214,12 +221,12 @@
           <h6 class="card-title">Email: {{ formData.userEmail }}</h6>
           <h6 class="card-title">Height: {{ formData.userHeight }}</h6>
           <h6 class="card-title">Weight: {{ formData.userWeight }}</h6>
-          <p class="card-text">
+        <p class="card-text">
             Your BMI is :
-            {{ calcBMI?.toFixed(2) }}
-          </p>
+            {{ result }}
+          </p> 
           <!-- Error message for BMI -->
-          <div>
+          <!-- <div>
             <div *ngIf="calcBMI > 25" class="text-danger fw-bold">
               BMI is overweight, Please start workout
             </div>
@@ -232,7 +239,7 @@
             <div *ngIf="calcBMI < 16" class="text-warning fw-semibold">
               BMI is underweight
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>

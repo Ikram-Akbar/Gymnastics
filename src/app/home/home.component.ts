@@ -14,30 +14,25 @@ export interface User {
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
- 
   formData: any = "";
-  weight: any;
-  height: any;
-  calcBMI: any;
+  result: number | null = null;
 
   constructor() {
-
   }
+  
   ngOnInit(): void {
 
   }
- 
+
   userForm = new FormGroup({
-    userName: new FormControl<String>("", [
+    userName: new FormControl<String>("", [Validators.required, Validators.minLength(4),Validators.maxLength(40)],
+    ),
+    userAge: new FormControl<Number | null>(null, [
       Validators.required,
-      Validators.minLength(6),
-      Validators.maxLength(40)
-    ]),
-    userAge: new FormControl<Number| null>(null, [
-      Validators.required,
+
     ]),
     userGender: new FormControl<String>("male"),
-    userPhone: new FormControl<Number | null>(null,[
+    userPhone: new FormControl<Number | null>(null, [
       Validators.pattern('(?:\\+88|88)?(01[3-9]\\d{8})')
     ]),
     userEmail: new FormControl<String>("", [
@@ -51,16 +46,18 @@ export class HomeComponent implements OnInit {
       Validators.required,
     ]),
   });
-  
+
   onSubmit() {
     this.formData = this.userForm.value;
     console.log(this.formData);
-    this.weight = this.formData.userWeight;
-    this.height = this.formData.userHeight;
-    this.calcBMI = (this.weight / (this.height * 2));
+    this.calcBMI()
+
     this.userForm.reset()
 
 
+  }
+  calcBMI() {
+    this.result = (this.formData.userWeight / (this.formData.userHeight * 2))
   }
 
 }
