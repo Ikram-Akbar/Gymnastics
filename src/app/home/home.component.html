@@ -10,32 +10,41 @@
        >
         <!-- name -->
         <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">Your Name</label>
+          <label for="User Name" class="form-label">Your Name</label>
           <input
             type="text"
             placeholder="name"
             class="form-control"
-            id="exampleInputEmail1"
             aria-describedby="emailHelp"
-            required
             formControlName="userName"
             maxlength="40"
             minlength="6"
           />
           <!-- For Error message -->
+         <span
+        class="text-danger"
+        *ngIf="!userForm.get('username').valid && userForm.get('username').touched"
+        >please write a valid name !</span> 
+          
           <!-- <div
             *ngIf="userName?.invalid && (userName?.dirty || userName?.touched)"
           >
-            <div *ngIf="userName?.hasError('required')" class="text-danger">
+            <div 
+            *ngIf="userName?.hasError('required')"
+             class="text-danger">
               Username is required
             </div>
-            <div *ngIf="userName?.hasError('minlength')" class="text-danger">
+            <div
+             *ngIf="userName?.hasError('minlength')"
+              class="text-danger">
               Username must at least 6 characters
             </div>
-            <div *ngIf="userName?.hasError('maxlength')" class="text-danger">
+            <div 
+            *ngIf="userName?.hasError('maxlength')" 
+            class="text-danger">
               Username at most 40 characters
             </div>
-          </div> -->
+          </div>  -->
         </div>
         <!-- age -->
         <div class="mb-3">
@@ -210,7 +219,7 @@
     </div>
     <div class="col-md-8 g-5 mt-5">
       <div class="card text-bg-light mb-3"
-      *ngIf="userForm.disable"
+     
       >
         <div class="card-header">User Information</div>
         <div class="card-body">
