@@ -231,16 +231,16 @@
           </p>
           <!-- Error message for BMI -->
           <div>
-            <div *ngIf="result > 25" class="text-danger fw-bold">
+            <div *ngIf="result > 25"  class="alert alert-danger fw-bold text-center text-dark" role="alert">
               BMI is overweight, Please start workout
             </div>
             <div
               *ngIf="result < 25 && result > 16"
-              class="text-success fw-semibold"
+               class="alert alert-success fw-semibold text-center text-dark" role="alert"
             >
               BMI is Perfect
             </div>
-            <div *ngIf="result < 16" class="text-warning fw-semibold">
+            <div *ngIf="result < 16" class="alert alert-warning fw-semibold text-center text-dark" role="alert">
               BMI is underweight
             </div>
           </div>
