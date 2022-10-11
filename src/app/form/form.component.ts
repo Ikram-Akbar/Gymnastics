@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-form',
@@ -7,13 +7,22 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./form.component.css']
 })
 export class FormComponent implements OnInit {
-  loginForm = FormGroup;
+  userData: FormGroup;
 
-  constructor(private fb: FormBuilder) {
-
+  constructor(private fb: FormBuilder) { }
+  
+  ngOnInit(): void {
+    this.userData = this.fb.group({
+      name: ["", [Validators.required]],
+      password: ["",[Validators.required]]
+    })
   }
 
-  ngOnInit(): void {
+  getControl(name) {
+    return this.userData.get(name)
+  }
+  onSubmit() {
+    console.log(this.userData.value)
   }
 
 }

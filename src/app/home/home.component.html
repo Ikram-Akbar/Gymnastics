@@ -3,11 +3,7 @@
   <div class="row">
     <div class="col-md-4 mt-5">
       <!-- Form -->
-      <form 
-      [formGroup]="userForm"
-       (ngSubmit)="onSubmit()"
-       
-       >
+      <form [formGroup]="userFrom" (ngSubmit)="onSubmit()">
         <!-- name -->
         <div class="mb-3">
           <label for="User Name" class="form-label">Your Name</label>
@@ -21,30 +17,30 @@
             minlength="6"
           />
           <!-- For Error message -->
-         <span
-        class="text-danger"
-        *ngIf="!userForm.get('username').valid && userForm.get('username').touched"
-        >please write a valid name !</span> 
-          
-          <!-- <div
-            *ngIf="userName?.invalid && (userName?.dirty || userName?.touched)"
+          <div
+            *ngIf="
+              !userFrom.controls['userName']?.valid &&
+              userFrom.controls['userName']?.touched
+            "
           >
-            <div 
-            *ngIf="userName?.hasError('required')"
-             class="text-danger">
+            <div
+              class="text-danger"
+              *ngIf="userFrom.controls['userName']?.hasError('required')"
+            >
               Username is required
             </div>
-            <div
-             *ngIf="userName?.hasError('minlength')"
-              class="text-danger">
+            <div class="text-danger" 
+            *ngIf="userFrom.controls['userName']?.hasError('minLength')"
+            >
               Username must at least 6 characters
             </div>
             <div 
-            *ngIf="userName?.hasError('maxlength')" 
-            class="text-danger">
+            class="text-danger" 
+            *ngIf="userFrom.controls['userName']?.hasError('maxLength')"
+            >
               Username at most 40 characters
             </div>
-          </div>  -->
+          </div>
         </div>
         <!-- age -->
         <div class="mb-3">
@@ -57,11 +53,14 @@
             formControlName="userAge"
           />
           <!-- For Error message -->
-          <!-- <div *ngIf="userAge?.invalid && (userAge?.dirty || userAge?.touched)">
-            <div *ngIf="userAge?.hasError('required')" class="text-danger">
-              Age is required
-            </div>
-          </div> -->
+          <div
+            *ngIf="
+              !userFrom.controls['userAge']?.valid &&
+              userFrom.controls['userAge']?.touched
+            "
+          >
+            <p class="text-danger">age is required</p>
+          </div>
         </div>
         <!-- Gender -->
         <div class="mb-3">
@@ -104,9 +103,6 @@
             />
             <label class="form-check-label" for="exampleRadios3"> Other </label>
           </div>
-           
-
-
         </div>
         <!-- phone number -->
         <div class="mb-3">
@@ -116,24 +112,31 @@
             type="tel"
             id="phone"
             name="phone"
-            placeholder="+880 "
+            placeholder="+880 or 880 "
             required
             formControlName="userPhone"
           />
 
           <!-- For Error message -->
-          <!-- <div
+          <div
             *ngIf="
-              userPhone?.invalid && (userPhone?.dirty || userPhone?.touched)
+              !userFrom.controls['userPhone']?.valid &&
+              userFrom.controls['userPhone']?.touched
             "
           >
-            <div *ngIf="userPhone?.hasError('required')" class="text-danger">
-              Phone is required
+            <div
+              class="text-danger"
+              *ngIf="userFrom.controls['userPhone']?.hasError('required')"
+            >
+              Phone number is required
             </div>
-            <div *ngIf="userPhone?.hasError('pattern')" class="text-danger">
-              Number start with +880 or 880
+            <div
+              class="text-danger"
+              *ngIf="userFrom.controls['userPhone']?.hasError('pattern')"
+            >
+              Enter the valid format
             </div>
-          </div> -->
+          </div>
         </div>
         <!-- Email address -->
         <div class="mb-3">
@@ -150,18 +153,25 @@
           />
 
           <!-- For Error message -->
-          <!-- <div
+          <div
             *ngIf="
-              userEmail?.invalid && (userEmail?.dirty || userEmail?.touched)
+              !userFrom.controls['userEmail']?.valid &&
+              userFrom.controls['userEmail']?.touched
             "
           >
-            <div *ngIf="userEmail?.hasError('required')" class="text-danger">
-              Email is required
+            <div
+              class="text-danger"
+              *ngIf="userFrom.controls['userEmail']?.hasError('required')"
+            >
+              emil is required
             </div>
-            <div *ngIf="userEmail?.hasError('pattern')" class="text-danger">
-              Enter an valid emil
+            <div
+              class="text-danger"
+              *ngIf="userFrom.controls['userEmail']?.hasError('pattern')"
+            >
+              Enter a valid emil
             </div>
-          </div> -->
+          </div>
         </div>
 
         <!-- height -->
@@ -176,16 +186,16 @@
             formControlName="userHeight"
           />
 
-
           <!-- For Error message -->
-          <!-- <div *ngIf="userHeight?.invalid && (userHeight?.dirty || userHeight?.touched)">
-            <div *ngIf="userHeight?.hasError('required')" class="text-danger">
-            Height  is required
-            </div>
-          </div> -->
+          <div
+            *ngIf="
+              !userFrom.controls['userHeight']?.valid &&
+              userFrom.controls['userHeight']?.touched
+            "
+          >
+            <p class="text-danger">Height is required</p>
+          </div>
         </div>
-
-     
 
         <!-- weight -->
         <div class="mb-3">
@@ -199,56 +209,55 @@
             formControlName="userWeight"
           />
           <!-- For Error message -->
-          <!-- <div *ngIf="userWeight?.invalid && (userWeight?.dirty || userWeight?.touched)">
-            <div *ngIf="userWeight?.hasError('required')" class="text-danger">
-            weight  is required
-            </div>
-          </div> -->
+          <div
+            *ngIf="
+              !userFrom.controls['userWeight']?.valid &&
+              userFrom.controls['userWeight']?.touched
+            "
+          >
+            <p class="text-danger">Weight is required</p>
+          </div>
         </div>
 
-        <!-- 
-            for checking value in json 
-            <p> {{values.value|json }} </p> 
-        -->
-
-        <!-- <p> {{userForm.value | json}} </p>  -->
-
-        <button type="submit" class="btn btn-primary" >Submit</button>
-        
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="userFrom.invalid"
+        >
+          Submit
+        </button>
       </form>
     </div>
-    <div class="col-md-8 g-5 mt-5">
-      <div class="card text-bg-light mb-3"
-     
-      >
+    <div class="col-md-8 g-5 mt-5" *ngIf="userInfoCard">
+      <div class="card text-bg-light mb-3">
         <div class="card-header">User Information</div>
         <div class="card-body">
-          <h5 class="card-title">Name: {{ formData.userName }}</h5>
-          <h6 class="card-title">Age: {{ formData.userAge }}</h6>
-          <h6 class="card-title">Gender: {{ formData.userGender }}</h6>
-          <h6 class="card-title">Mobile: {{ formData.userPhone }}</h6>
-          <h6 class="card-title">Email: {{ formData.userEmail }}</h6>
-          <h6 class="card-title">Height: {{ formData.userHeight }}</h6>
-          <h6 class="card-title">Weight: {{ formData.userWeight }}</h6>
-        <p class="card-text">
+          <h5 class="card-title">Name: {{ userInfo?.userName }}</h5>
+          <h6 class="card-title">Age: {{ userInfo?.userAge }}</h6>
+          <h6 class="card-title">Gender: {{ userInfo?.userGender }}</h6>
+          <h6 class="card-title">Mobile: {{ userInfo?.userPhone }}</h6>
+          <h6 class="card-title">Email: {{ userInfo?.userEmail }}</h6>
+          <h6 class="card-title">Height: {{ userInfo?.userHeight }}</h6>
+          <h6 class="card-title">Weight: {{ userInfo?.userWeight }}</h6>
+          <p class="card-text">
             Your BMI is :
             {{ result }}
-          </p> 
+          </p>
           <!-- Error message for BMI -->
-          <!-- <div>
-            <div *ngIf="calcBMI > 25" class="text-danger fw-bold">
+          <div>
+            <div *ngIf="result > 25" class="text-danger fw-bold">
               BMI is overweight, Please start workout
             </div>
             <div
-              *ngIf="calcBMI < 25 && calcBMI > 16"
+              *ngIf="result < 25 && result > 16"
               class="text-success fw-semibold"
             >
               BMI is Perfect
             </div>
-            <div *ngIf="calcBMI < 16" class="text-warning fw-semibold">
+            <div *ngIf="result < 16" class="text-warning fw-semibold">
               BMI is underweight
             </div>
-          </div> -->
+          </div>
         </div>
       </div>
     </div>
