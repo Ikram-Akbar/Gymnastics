@@ -13,31 +13,17 @@
             class="form-control"
             aria-describedby="emailHelp"
             formControlName="userName"
-            maxlength="40"
-            minlength="6"
+          
           />
           <!-- For Error message -->
-          <div
-            *ngIf="
-              !userFrom.controls['userName']?.valid &&
-              userFrom.controls['userName']?.touched
-            "
-          >
-            <div
-              class="text-danger"
-              *ngIf="userFrom.controls['userName']?.hasError('required')"
-            >
-              Username is required
+          <div *ngIf="!userFrom.controls['userName']?.valid && userFrom.controls['userName']?.touched">
+            <div class="text-danger" *ngIf="userFrom.controls['userName']?.hasError('required')">
+              *Username is required
             </div>
-            <div class="text-danger" 
-            *ngIf="userFrom.controls['userName']?.hasError('minLength')"
-            >
-              Username must at least 6 characters
+            <div class="text-danger" *ngIf="userFrom.controls['userName']?.hasError('minLength')">
+              Username must at least 4 characters
             </div>
-            <div 
-            class="text-danger" 
-            *ngIf="userFrom.controls['userName']?.hasError('maxLength')"
-            >
+            <div class="text-danger" *ngIf="userFrom.controls['userName']?.hasError('maxLength')" >
               Username at most 40 characters
             </div>
           </div>

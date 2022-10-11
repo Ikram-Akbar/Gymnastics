@@ -17,24 +17,24 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.userFrom = new FormGroup<userFormTypedControl>({
-      userName: new FormControl('', [
+      'userName': new FormControl('', [
         Validators.required,
         Validators.minLength(4),
-        Validators.maxLength(40),
+        Validators.maxLength(12),
       ]),
-      userAge: new FormControl(null, [Validators.required]),
-      userGender: new FormControl('',
+      'userAge': new FormControl(null, [Validators.required]),
+      'userGender': new FormControl('',
         [Validators.required]),
-      userPhone: new FormControl(null, [
+      'userPhone': new FormControl(null, [
         Validators.required,
         Validators.pattern('(?:\\+88|88)?(01[3-9]\\d{8})'),
       ]),
-      userEmail: new FormControl('', [
+      'userEmail': new FormControl('', [
         Validators.required,
         Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
       ]),
-      userWeight: new FormControl(null, [Validators.required]),
-      userHeight: new FormControl(null, [Validators.required]),
+      'userWeight': new FormControl(null, [Validators.required]),
+      'userHeight': new FormControl(null, [Validators.required]),
     })
   };
 
