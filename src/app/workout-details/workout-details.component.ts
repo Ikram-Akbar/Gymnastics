@@ -9,18 +9,23 @@ import { WorkoutTypedControl } from '../Models/userInterface';
 })
 export class WorkoutDetailsComponent implements OnInit {
   workoutForm: FormGroup;
+  workoutFormValue: Array<any> = [];
   constructor() { }
 
   ngOnInit(): void {
     this.workoutForm = new FormGroup<WorkoutTypedControl>({
       calender: new FormControl("", [Validators.required]),
       workoutList: new FormControl("", [Validators.required]),
-      distance: new FormControl(0, [Validators.required]),
-      calory: new FormControl(0,[Validators.required])
+      distance: new FormControl(null, [Validators.required]),
+      calory: new FormControl(null, [Validators.required])
     })
   }
 
   onSubmit() {
-    console.log(this.workoutForm.value);
+
+    // console.log(this.workoutForm.value)
+    this.workoutFormValue.push(this.workoutForm.value)
+    console.log((this.workoutFormValue));
+
   }
 }
