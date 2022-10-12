@@ -2,47 +2,38 @@
 <div class="container">
   <div class="row">
     <div class="col-md-4">
-      <form [formGroup]="workoutForm" (ngSubmit)=" onSubmit()">
+      <form [formGroup]="workoutForm" (ngSubmit)="onSubmit()">
         <label for="date" class="fw-semibold mb-2"
           >Please select the date :
         </label>
-        <input type="date" class="form-control"  formControlName="calender"/>
+        <input type="date" class="form-control" formControlName="calender" />
         <label for="workout-type" class="fw-semibold mb-2"
           >Workout Type :
         </label>
 
-        <div class="dropdown mb-2">
-          <button
-            class="btn btn-secondary dropdown-toggle"
-            type="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-           
-           
-          >
-            Select Workout
-          </button>
-          <ul class="dropdown-menu"   formControlName="workoutList">
-            <li><a class="dropdown-item" value="swimming">Swimming</a></li>
-            <li><a class="dropdown-item" value="bicycle" >Bicycle</a></li>
-            <li><a class="dropdown-item" value="walking" >Walking</a></li>
-          </ul>
+        <div class="mb-2">
+          <select formControlName="workoutList" class="form-select">
+            <option selected>Select</option>
+            <option value="swimming">Swimming</option>
+            <option value="bicycle">Bicycle</option>
+            <option value="walking">Walking</option>
+          </select>
         </div>
-        <label for="date" class="fw-semibold mb-2"
-          >Distance
-          <span class="text-bg-primary fw-semibold badge rounded-pill"
-            >Meter</span
-          >
-        </label>
 
-        <input type="number" class="form-control" placeholder="Distance"  formControlName="distance" />
-        <label for="date" class="fw-semibold mb-2"
-          >Calory
-          <span class="text-bg-primary fw-semibold badge rounded-pill"
-            >Kcl</span
-          >
-        </label>
-        <input type="number" class="form-control" placeholder="Calory Burn"  formControlName="calory" />
+        <label for="date" class="fw-semibold mb-2">Distance<span class="text-bg-primary fw-semibold badge rounded-pill ms-2">Meter</span></label>
+        <input
+          type="number"
+          class="form-control"
+          placeholder="Distance"
+          formControlName="distance"
+        />
+        <label for="date" class="fw-semibold mb-2">Calory<span class="text-bg-primary fw-semibold badge rounded-pill ms-2">Kcl</span></label>
+        <input
+          type="number"
+          class="form-control"
+          placeholder="Calory Burn"
+          formControlName="calory"
+        />
 
         <button class="btn btn-outline-success mt-3" type="submit">
           Submit
@@ -57,16 +48,16 @@
             <th scope="col">Workout-type</th>
             <th scope="col">Distance</th>
             <th scope="col">Burn Calory</th>
-            <th scope="col">Date</th>
+            <th scope="col">Date (yy-mm-dd)</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Swimming</td>
-            <td>100</td>
-            <td>250</td>
-            <td>10-12-2022</td>
+          <tr *ngFor="let item of workoutFormValue; let i = index">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>{{ item.workoutList }}</td>
+            <td>{{ item.distance }} <span class="text-bg-secondary fw-semibold badge rounded-pill ms-2"> Meter</span></td>
+            <td>{{ item.calory }} <span class="text-bg-secondary fw-semibold badge rounded-pill ms-2"> Kcl</span></td>
+            <td>{{ item.calender }}</td>
           </tr>
         </tbody>
       </table>
