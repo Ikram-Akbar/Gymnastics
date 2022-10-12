@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-fluid">
   <div class="row">
     <div class="col-xs-12">
       <!-- navbar -->
@@ -19,8 +19,11 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav m-auto text-light">
-              <a class="nav-link active text-light fw-semibold" aria-current="page" href="#"
+              <a class="nav-link active text-light fw-semibold" aria-current="page" routerLink=""
                 >Home</a
+              >
+              <a class="nav-link active text-light fw-semibold" aria-current="page" routerLink="workout"
+                >Workout</a
               >
             </div>
           </div>
@@ -30,8 +33,7 @@
   </div>
   <div class="row">
     <div class="col-xs-12">
-      <!-- home component  -->
-<app-home></app-home>
+<router-outlet></router-outlet>
     </div>
   </div>
 </div>

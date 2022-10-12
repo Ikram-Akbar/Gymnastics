@@ -6,10 +6,10 @@
       <form [formGroup]="userFrom" (ngSubmit)="onSubmit()">
         <!-- name -->
         <div class="mb-3">
-          <label for="User Name" class="form-label">Your Name</label>
+          <label for="User Name" class="form-label fw-bold">Your Name</label>
           <input
             type="text"
-            placeholder="name"
+            placeholder="Name"
             class="form-control"
             aria-describedby="emailHelp"
             formControlName="userName"
@@ -30,7 +30,7 @@
         </div>
         <!-- age -->
         <div class="mb-3">
-          <label for="age">Your age</label>
+          <label for="age" class="fw-bold">Your age</label>
           <input
             type="number"
             class="form-control"
@@ -50,7 +50,7 @@
         </div>
         <!-- Gender -->
         <div class="mb-3">
-          <label>Gender</label>
+          <label class="fw-bold">Gender</label>
           <div class="form-check">
             <input
               class="form-check-input"
@@ -92,7 +92,7 @@
         </div>
         <!-- phone number -->
         <div class="mb-3">
-          <label for="phone">Enter a phone number:</label><br /><br />
+          <label for="phone" class="fw-bold">Enter a phone number</label><br /><br />
           <input
             class="form-control"
             type="tel"
@@ -126,7 +126,7 @@
         </div>
         <!-- Email address -->
         <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label"
+          <label for="exampleFormControlInput1" class="form-label fw-bold"
             >Email address</label
           >
           <input
@@ -162,8 +162,8 @@
 
         <!-- height -->
         <div class="mb-3">
-          <label for="height"
-            >Height in <span class="text-primary fw-semibold">Meter</span>
+          <label for="height"  class="form-label fw-bold"
+            >Height in <span class="text-bg-primary fw-semibold badge rounded-pill">Meter</span>
           </label>
           <input
             type="number"
@@ -185,8 +185,8 @@
 
         <!-- weight -->
         <div class="mb-3">
-          <label for="weight"
-            >Weight in <span class="text-primary fw-semibold">KG</span>
+          <label for="weight"  class="form-label fw-bold"
+            >Weight in <span class="text-bg-primary fw-semibold badge rounded-pill">KG</span>
           </label>
           <input
             type="number"
@@ -218,7 +218,7 @@
       <div class="card text-bg-light mb-3">
         <div class="card-header">User Information</div>
         <div class="card-body">
-          <h5 class="card-title">Name: {{ userInfo?.userName }}</h5>
+          <h5 class="card-title">Hello , {{ userInfo?.userName }}</h5>
           <h6 class="card-title">Age: {{ userInfo?.userAge }}</h6>
           <h6 class="card-title">Gender: {{ userInfo?.userGender }}</h6>
           <h6 class="card-title">Mobile: {{ userInfo?.userPhone }}</h6>
@@ -232,16 +232,19 @@
           <!-- Error message for BMI -->
           <div>
             <div *ngIf="result > 25"  class="alert alert-danger fw-bold text-center text-dark" role="alert">
-              BMI is overweight, Please start workout
+             <strong> BMI is overweight, Please start workout !! </strong>
+             <a  routerLink="workout"  class="btn btn-danger">Workout Now </a>
+                
             </div>
             <div
               *ngIf="result < 25 && result > 16"
                class="alert alert-success fw-semibold text-center text-dark" role="alert"
             >
-              BMI is Perfect
+              Congratulation , Your BMI is Perfect !! 
             </div>
             <div *ngIf="result < 16" class="alert alert-warning fw-semibold text-center text-dark" role="alert">
-              BMI is underweight
+              <strong>BMI is underweight</strong>
+             
             </div>
           </div>
         </div>
