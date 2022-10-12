@@ -218,13 +218,18 @@
       <div class="card text-bg-light mb-3">
         <div class="card-header">User Information</div>
         <div class="card-body">
+<<<<<<< HEAD
           <h5 class="card-title">Hello , {{ userInfo?.userName }}</h5>
           <h6 class="card-title">Age: {{ userInfo?.userAge }}</h6>
+=======
+          <h5 class="card-title">Name: {{ userInfo?.userName }}</h5>
+          <h6 class="card-title">Age: {{ userInfo?.userAge }} <span>years old</span></h6>
+>>>>>>> e17dbfeee5248a772523c7162f4475cae0404806
           <h6 class="card-title">Gender: {{ userInfo?.userGender }}</h6>
           <h6 class="card-title">Mobile: {{ userInfo?.userPhone }}</h6>
           <h6 class="card-title">Email: {{ userInfo?.userEmail }}</h6>
-          <h6 class="card-title">Height: {{ userInfo?.userHeight }}</h6>
-          <h6 class="card-title">Weight: {{ userInfo?.userWeight }}</h6>
+          <h6 class="card-title">Height: {{ userInfo?.userHeight }} <span>Meter</span></h6>
+          <h6 class="card-title">Weight: {{ userInfo?.userWeight }} <span>KG</span> </h6>
           <p class="card-text">
             Your BMI is :
             {{ result.toFixed(2) }}
