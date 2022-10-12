@@ -1,61 +1,73 @@
+<h1 class="text-center my-5">Welcome To Workout Details Page ...</h1>
 <div class="container">
   <div class="row">
     <div class="col-md-4">
-      <h3>Work out from today</h3>
-      <label for="date" class="fw-semibold mb-2"
-        >Please select the date :
-      </label>
-      <input type="date" class="form-control" />
-      <label for="workout-type" class="fw-semibold mb-2">Workout Type : </label>
+      <form action="">
+        <label for="date" class="fw-semibold mb-2"
+          >Please select the date :
+        </label>
+        <input type="date" class="form-control" />
+        <label for="workout-type" class="fw-semibold mb-2"
+          >Workout Type :
+        </label>
 
-      <div class="dropdown mb-2">
-        <button
-          class="btn btn-secondary dropdown-toggle"
-          type="button"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-        >
-          Select Workout
+        <div class="dropdown mb-2">
+          <button
+            class="btn btn-secondary dropdown-toggle"
+            type="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Select Workout
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item">Swimming</a></li>
+            <li><a class="dropdown-item">Bicycle</a></li>
+            <li><a class="dropdown-item">Walking</a></li>
+          </ul>
+        </div>
+        <label for="date" class="fw-semibold mb-2"
+          >Distance
+          <span class="text-bg-primary fw-semibold badge rounded-pill"
+            >Meter</span
+          >
+        </label>
+
+        <input type="number" class="form-control" placeholder="Distance" />
+        <label for="date" class="fw-semibold mb-2"
+          >Calory
+          <span class="text-bg-primary fw-semibold badge rounded-pill"
+            >Kcl</span
+          >
+        </label>
+        <input type="number" class="form-control" placeholder="Calory Burn" />
+
+        <button class="btn btn-outline-success mt-3" type="submit">
+          Submit
         </button>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item">Swimming</a></li>
-          <li><a class="dropdown-item">Bicycle</a></li>
-          <li><a class="dropdown-item">Walking</a></li>
-        </ul>
-      </div>
-      <label for="date" class="fw-semibold mb-2"
-        >Distance <span class="text-bg-primary fw-semibold badge rounded-pill">Meter</span> 
-      </label>
-
-      <input type="number" class="form-control" placeholder="Distance" />
-      <label for="date" class="fw-semibold mb-2"
-        >Calory <span class="text-bg-primary fw-semibold badge rounded-pill">Kcl</span> 
-      </label>
-      <input type="number" class="form-control" placeholder="Calory Burn" />
+      </form>
     </div>
-   <div class="col-md-8 mt-5">
+    <div class="col-md-8 mt-5">
       <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Sl</th>
-      <th scope="col">Workout-type</th>
-      <th scope="col">Distance</th>
-      <th scope="col">Burn Calory</th>
-      <th scope="col">Date</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Swimming</td>
-      <td>100</td>
-      <td>250</td>
-      <td>10-12-2022</td>
-    </tr>
-   
-  </tbody>
-</table>
-   </div>
+        <thead>
+          <tr>
+            <th scope="col">Sl</th>
+            <th scope="col">Workout-type</th>
+            <th scope="col">Distance</th>
+            <th scope="col">Burn Calory</th>
+            <th scope="col">Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Swimming</td>
+            <td>100</td>
+            <td>250</td>
+            <td>10-12-2022</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
- 
 </div>
