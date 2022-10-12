@@ -1,12 +1,19 @@
 import { FormControl } from "@angular/forms";
 
 export interface userFormTypedControl {
-    userName: FormControl<string |null>,
-    userAge: FormControl<number | null>,
-    userGender:FormControl<string|null>,
-    userEmail: FormControl<string|null>,
+    userName: FormControl<string >,
+    userAge: FormControl<number >,
+    userGender:FormControl<string>,
+    userEmail: FormControl<string>,
     userPhone: FormControl<number | string>,
-    userHeight: FormControl<number | null>,
-    userWeight: FormControl<number| null>
+    userHeight: FormControl<number>,
+    userWeight: FormControl<number>
 
+}
+
+export interface WorkoutTypedControl{
+    calender: FormControl<string>,
+    workoutList: FormControl<string>,
+    distance: FormControl<number>,
+    calory:FormControl<number>
 }

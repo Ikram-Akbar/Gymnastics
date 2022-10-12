@@ -2,11 +2,11 @@
 <div class="container">
   <div class="row">
     <div class="col-md-4">
-      <form action="">
+      <form [formGroup]="workoutForm" (ngSubmit)=" onSubmit()">
         <label for="date" class="fw-semibold mb-2"
           >Please select the date :
         </label>
-        <input type="date" class="form-control" />
+        <input type="date" class="form-control"  formControlName="calender"/>
         <label for="workout-type" class="fw-semibold mb-2"
           >Workout Type :
         </label>
@@ -17,13 +17,15 @@
             type="button"
             data-bs-toggle="dropdown"
             aria-expanded="false"
+           
+           
           >
             Select Workout
           </button>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item">Swimming</a></li>
-            <li><a class="dropdown-item">Bicycle</a></li>
-            <li><a class="dropdown-item">Walking</a></li>
+          <ul class="dropdown-menu"   formControlName="workoutList">
+            <li><a class="dropdown-item" value="swimming">Swimming</a></li>
+            <li><a class="dropdown-item" value="bicycle" >Bicycle</a></li>
+            <li><a class="dropdown-item" value="walking" >Walking</a></li>
           </ul>
         </div>
         <label for="date" class="fw-semibold mb-2"
@@ -33,14 +35,14 @@
           >
         </label>
 
-        <input type="number" class="form-control" placeholder="Distance" />
+        <input type="number" class="form-control" placeholder="Distance"  formControlName="distance" />
         <label for="date" class="fw-semibold mb-2"
           >Calory
           <span class="text-bg-primary fw-semibold badge rounded-pill"
             >Kcl</span
           >
         </label>
-        <input type="number" class="form-control" placeholder="Calory Burn" />
+        <input type="number" class="form-control" placeholder="Calory Burn"  formControlName="calory" />
 
         <button class="btn btn-outline-success mt-3" type="submit">
           Submit
