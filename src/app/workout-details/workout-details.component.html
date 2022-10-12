@@ -3,14 +3,26 @@
   <div class="row">
     <div class="col-md-4">
       <form [formGroup]="workoutForm" (ngSubmit)="onSubmit()">
-        <label for="date" class="fw-semibold mb-2"
-          >Please select the date :
-        </label>
-        <input type="date" class="form-control" formControlName="calender" />
+        <div>
+          <label for="date" class="fw-semibold mb-2"
+            >Please select the date :
+          </label>
+          <input type="date" class="form-control" formControlName="calender" />
+
+          <!-- For Error message -->
+          <div
+            *ngIf="
+              !workoutForm.controls['calender']?.valid &&
+              workoutForm.controls['calender']?.touched
+            "
+          >
+            <p class="text-danger">This is required</p>
+          </div>
+        </div>
+
         <label for="workout-type" class="fw-semibold mb-2"
           >Workout Type :
         </label>
-
         <div class="mb-2">
           <select formControlName="workoutList" class="form-select">
             <option selected>Select</option>
@@ -19,15 +31,45 @@
             <option value="walking">Walking</option>
           </select>
         </div>
+        <!-- For Error message -->
+        <div
+          *ngIf="
+            !workoutForm.controls['workoutList']?.valid &&
+            workoutForm.controls['workoutList']?.touched
+          "
+        >
+          <p class="text-danger">This is required</p>
+        </div>
 
-        <label for="date" class="fw-semibold mb-2">Distance<span class="text-bg-primary fw-semibold badge rounded-pill ms-2">Meter</span></label>
+        <label for="date" class="fw-semibold mb-2"
+          >Distance<span
+            class="text-bg-primary fw-semibold badge rounded-pill ms-2"
+            >Meter</span
+          ></label
+        >
         <input
           type="number"
           class="form-control"
           placeholder="Distance"
           formControlName="distance"
         />
-        <label for="date" class="fw-semibold mb-2">Calory<span class="text-bg-primary fw-semibold badge rounded-pill ms-2">Kcl</span></label>
+
+        <!-- For Error message -->
+        <div
+          *ngIf="
+            !workoutForm.controls['distance']?.valid &&
+            workoutForm.controls['distance']?.touched
+          "
+        >
+          <p class="text-danger">This is required</p>
+        </div>
+
+        <label for="date" class="fw-semibold mb-2"
+          >Calory<span
+            class="text-bg-primary fw-semibold badge rounded-pill ms-2"
+            >Kcl</span
+          ></label
+        >
         <input
           type="number"
           class="form-control"
@@ -35,7 +77,20 @@
           formControlName="calory"
         />
 
-        <button class="btn btn-outline-success mt-3" type="submit">
+        <div
+          *ngIf="
+            !workoutForm.controls['calory']?.valid &&
+            workoutForm.controls['calory']?.touched
+          "
+        >
+          <p class="text-danger">This is required</p>
+        </div>
+
+        <button
+          class="btn btn-outline-success mt-3"
+          [disabled]="!workoutForm.valid"
+          type="submit"
+        >
           Submit
         </button>
       </form>
@@ -55,8 +110,22 @@
           <tr *ngFor="let item of workoutFormValue; let i = index">
             <th scope="row">{{ i + 1 }}</th>
             <td>{{ item.workoutList }}</td>
-            <td>{{ item.distance }} <span class="text-bg-secondary fw-semibold badge rounded-pill ms-2"> Meter</span></td>
-            <td>{{ item.calory }} <span class="text-bg-secondary fw-semibold badge rounded-pill ms-2"> Kcl</span></td>
+            <td>
+              {{ item.distance }}
+              <span
+                class="text-bg-secondary fw-semibold badge rounded-pill ms-2"
+              >
+                Meter</span
+              >
+            </td>
+            <td>
+              {{ item.calory }}
+              <span
+                class="text-bg-secondary fw-semibold badge rounded-pill ms-2"
+              >
+                Kcl</span
+              >
+            </td>
             <td>{{ item.calender }}</td>
           </tr>
         </tbody>
