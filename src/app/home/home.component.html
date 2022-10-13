@@ -13,17 +13,30 @@
             class="form-control"
             aria-describedby="emailHelp"
             formControlName="userName"
-          
           />
           <!-- For Error message -->
-          <div *ngIf="!userFrom.controls['userName']?.valid && userFrom.controls['userName']?.touched">
-            <div class="text-danger" *ngIf="userFrom.controls['userName']?.hasError('required')">
+          <div
+            *ngIf="
+              !userFrom.controls['userName']?.valid &&
+              userFrom.controls['userName']?.touched
+            "
+          >
+            <div
+              class="text-danger"
+              *ngIf="userFrom.controls['userName']?.hasError('required')"
+            >
               *Username is required
             </div>
-            <div class="text-danger" *ngIf="userFrom.controls['userName']?.hasError('minLength')">
+            <div
+              class="text-danger"
+              *ngIf="userFrom.controls['userName']?.hasError('minLength')"
+            >
               Username must at least 4 characters
             </div>
-            <div class="text-danger" *ngIf="userFrom.controls['userName']?.hasError('maxLength')" >
+            <div
+              class="text-danger"
+              *ngIf="userFrom.controls['userName']?.hasError('maxLength')"
+            >
               Username at most 40 characters
             </div>
           </div>
@@ -92,7 +105,8 @@
         </div>
         <!-- phone number -->
         <div class="mb-3">
-          <label for="phone" class="fw-bold">Enter a phone number</label><br /><br />
+          <label for="phone" class="fw-bold">Enter a phone number</label
+          ><br /><br />
           <input
             class="form-control"
             type="tel"
@@ -162,8 +176,11 @@
 
         <!-- height -->
         <div class="mb-3">
-          <label for="height"  class="form-label fw-bold"
-            >Height in <span class="text-bg-primary fw-semibold badge rounded-pill">Meter</span>
+          <label for="height" class="form-label fw-bold"
+            >Height in
+            <span class="text-bg-primary fw-semibold badge rounded-pill"
+              >Meter</span
+            >
           </label>
           <input
             type="number"
@@ -185,8 +202,11 @@
 
         <!-- weight -->
         <div class="mb-3">
-          <label for="weight"  class="form-label fw-bold"
-            >Weight in <span class="text-bg-primary fw-semibold badge rounded-pill">KG</span>
+          <label for="weight" class="form-label fw-bold"
+            >Weight in
+            <span class="text-bg-primary fw-semibold badge rounded-pill"
+              >KG</span
+            >
           </label>
           <input
             type="number"
@@ -215,43 +235,54 @@
       </form>
     </div>
     <div class="col-md-8 g-5 mt-5" *ngIf="userInfoCard">
-      <div class="card text-bg-light mb-3">
-        <div class="card-header">User Information</div>
-        <div class="card-body">
-<<<<<<< HEAD
-          <h5 class="card-title">Hello , {{ userInfo?.userName }}</h5>
-          <h6 class="card-title">Age: {{ userInfo?.userAge }}</h6>
-=======
-          <h5 class="card-title">Name: {{ userInfo?.userName }}</h5>
-          <h6 class="card-title">Age: {{ userInfo?.userAge }} <span>years old</span></h6>
->>>>>>> e17dbfeee5248a772523c7162f4475cae0404806
-          <h6 class="card-title">Gender: {{ userInfo?.userGender }}</h6>
-          <h6 class="card-title">Mobile: {{ userInfo?.userPhone }}</h6>
-          <h6 class="card-title">Email: {{ userInfo?.userEmail }}</h6>
-          <h6 class="card-title">Height: {{ userInfo?.userHeight }} <span>Meter</span></h6>
-          <h6 class="card-title">Weight: {{ userInfo?.userWeight }} <span>KG</span> </h6>
-          <p class="card-text">
-            Your BMI is :
-            {{ result.toFixed(2) }}
-          </p>
-          <!-- Error message for BMI -->
-          <div>
-            <div *ngIf="result > 25"  class="alert alert-danger fw-bold text-center text-dark" role="alert">
-             <strong> BMI is overweight, Please start workout !! </strong>
-             <a  routerLink="workout"  class="btn btn-danger">Workout Now </a>
-                
-            </div>
-            <div
-              *ngIf="result < 25 && result > 16"
-               class="alert alert-success fw-semibold text-center text-dark" role="alert"
-            >
-              Congratulation , Your BMI is Perfect !! 
-            </div>
-            <div *ngIf="result < 16" class="alert alert-warning fw-semibold text-center text-dark" role="alert">
-              <strong>BMI is underweight</strong>
-             
-            </div>
-          </div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Age</th>
+            <th scope="col">Gender</th>
+            <th scope="col">Mobile</th>
+            <th scope="col">Email</th>
+            <th scope="col">Height</th>
+            <th scope="col">Weight</th>
+            <th scope="col">BMI</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">{{ userInfo?.userName }}</th>
+            <td>{{ userInfo?.userAge }} <span>years old</span></td>
+            <td>{{ userInfo?.userGender }}</td>
+            <td>{{ userInfo?.userPhone }}</td>
+            <td>{{ userInfo?.userEmail }}</td>
+            <td>{{ userInfo?.userHeight }}</td>
+            <td>{{ userInfo?.userWeight }}</td>
+            <td>{{ result.toFixed(2) }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <div>
+        <div
+          *ngIf="result > 25"
+          class="alert alert-danger fw-bold text-center text-dark"
+          role="alert"
+        >
+          <strong> BMI is overweight, Please start workout !! </strong>
+          <a routerLink="workout" class="btn btn-danger">Workout Now </a>
+        </div>
+        <div
+          *ngIf="result < 25 && result > 16"
+          class="alert alert-success fw-semibold text-center text-dark"
+          role="alert"
+        >
+          Congratulation , Your BMI is Perfect !!
+        </div>
+        <div
+          *ngIf="result < 16"
+          class="alert alert-warning fw-semibold text-center text-dark"
+          role="alert"
+        >
+          <strong>BMI is underweight</strong>
         </div>
       </div>
     </div>
