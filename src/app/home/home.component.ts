@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
       userName: new FormControl('', [
         Validators.required,
         Validators.minLength(4),
-        Validators.maxLength(40)
+        Validators.maxLength(40),
       ]),
       userAge: new FormControl(null, [Validators.required]),
       userGender: new FormControl('', [Validators.required]),

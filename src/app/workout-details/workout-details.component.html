@@ -5,7 +5,7 @@
       <form [formGroup]="workoutForm" (ngSubmit)="onSubmit()">
         <div>
           <label for="date" class="fw-semibold mb-2"
-            >Please select the date :
+            >Select The Date 
           </label>
           <input type="date" class="form-control" formControlName="calender" />
 
@@ -21,7 +21,7 @@
         </div>
 
         <label for="workout-type" class="fw-semibold mb-2"
-          >Workout Type :
+          >Workout Type 
         </label>
         <div class="mb-2">
           <select formControlName="workoutList" class="form-select">
@@ -86,7 +86,7 @@
         </div>
 
         <button
-          class="btn btn-outline-success mt-3"
+          class="btn btn-outline-dark mt-3"
           [disabled]="!workoutForm.valid"
           type="submit"
         >

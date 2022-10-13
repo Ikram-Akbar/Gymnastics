@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { WorkoutDetailsComponent } from './workout-details/workout-details.component';
+import { WorkoutDetailsService } from './workout-details/workout-details.service';
 
 
 @NgModule({
@@ -22,7 +23,9 @@ import { WorkoutDetailsComponent } from './workout-details/workout-details.compo
     FormsModule,
     RouterModule
   ],
-  providers: [],
+  providers: [
+    WorkoutDetailsService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
