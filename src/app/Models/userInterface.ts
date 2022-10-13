@@ -8,9 +8,7 @@ export interface userFormTypedControl {
     userPhone: FormControl<number | string>,
     userHeight: FormControl<number>,
     userWeight: FormControl<number>
-
 }
-
 export interface WorkoutTypedControl{
     calender: FormControl<string>,
     workoutList: FormControl<string>,

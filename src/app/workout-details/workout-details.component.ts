@@ -22,10 +22,6 @@ export class WorkoutDetailsComponent implements OnInit {
   }
 
   onSubmit() {
-
-    // console.log(this.workoutForm.value)
     this.workoutFormValue.push(this.workoutForm.value)
-    console.log((this.workoutFormValue));
-
   }
 }
