@@ -10,12 +10,8 @@ import { WorkoutTypedControl } from '../Models/userInterface';
 export class WorkoutDetailsComponent implements OnInit {
   workoutForm: FormGroup;
   workoutFormValue: Array<any> = [];
-  userData: any = {};
-  info: Array<any> = [];
 
-  constructor() {
-    
-  }
+  constructor() {}
 
   ngOnInit(): void {
     this.workoutForm = new FormGroup<WorkoutTypedControl>({
@@ -24,30 +20,10 @@ export class WorkoutDetailsComponent implements OnInit {
       distance: new FormControl(null, [Validators.required]),
       calory: new FormControl(null, [Validators.required]),
     });
-    this.userInfoFromLocalStorage();
   }
 
   onSubmit() {
     this.workoutFormValue.push(this.workoutForm.value);
-    this.userData = Object.assign(this.userData, this.workoutForm.value);
-    this.addUser(this.userData);
-  }
-
-  addUser(userData) {
-    let users = [];
-    if (localStorage.getItem('Users')) {
-      users = JSON.parse(localStorage.getItem('Users'));
-      users = [...users, userData];
-    } else {
-      users = [userData];
-    }
-    localStorage.setItem('Users', JSON.stringify(users));
-  }
-  userInfoFromLocalStorage() {
-    this.info = JSON.parse(localStorage.getItem("Users"));
+    this.workoutForm.reset();
   }
 }
-
-
-
-
