@@ -16,14 +16,17 @@ export class WorkoutDetailsComponent implements OnInit {
   userObj: object;
   fName: string;
   tableShow: boolean = false;
+  newArr: Array<number> = [1, 2, , 3, 4, 5, 6, 7];
+  largeValue: number;
   dropDownItems: Array<DropDownListTypedCheck> = [
     { value: 'cycling', name: 'Cycling' },
     { value: 'swimming', name: 'swimming' },
     { value: 'walking', name: 'walking' },
   ];
- 
 
-  constructor() {}
+
+  constructor() {
+  }
 
   ngOnInit(): void {
     this.workoutForm = new FormGroup<WorkoutTypedControl>({
@@ -33,10 +36,20 @@ export class WorkoutDetailsComponent implements OnInit {
       calory: new FormControl(null, [Validators.required]),
     });
   }
-
+  findLargeValue() {
+    this.largeValue = 0;
+    for (let i = 0; i < this.newArr.length; i++){
+      if (this.newArr[i] > this.largeValue) {
+        this.largeValue = this.newArr[i]
+      }
+    }
+ }
   onSubmit() {
     this.workoutFormValues.push(this.workoutForm.value);
+    console.log(this.workoutFormValues);
     this.tableShow = true;
     this.workoutForm.reset();
+    this.findLargeValue();
+    console.log(this.largeValue);
   }
 }

@@ -49,4 +49,5 @@ export class HomeComponent implements OnInit {
     this.result =
       this.userFrom.value.userWeight / (this.userFrom.value.userHeight * 2);
   }
+  
 }
