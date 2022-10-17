@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { userFormTypedControl } from '../Models/userInterface';
-import { SendAndReceiveDataService } from '../send-and-receive-data.service';
+
 
 @Component({
   selector: 'app-home',

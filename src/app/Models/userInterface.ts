@@ -16,3 +16,8 @@ export interface WorkoutTypedControl{
     calory:FormControl<number>
 }
 
+export interface DropDownListTypedCheck {
+    value: string;
+    name: string;
+}
+

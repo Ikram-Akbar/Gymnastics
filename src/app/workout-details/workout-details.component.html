@@ -25,9 +25,7 @@
         </label>
         <div class="mb-2">
           <select formControlName="workoutList" class="form-select">
-            <option value="swimming">Swimming</option>
-            <option value="bicycle">Bicycle</option>
-            <option value="walking">Walking</option>
+            <option  *ngFor="let item of dropDownItems" value="{{item.value}}">{{item.name}}</option>
           </select>
         </div>
         <!-- For Error message -->
@@ -100,14 +98,15 @@
         <thead>
           <tr class="text-primary">
             <th scope="col">Sl</th>
-            <th scope="col">Workout-type</th>
+            <th scope="col">Workout-Type</th>
             <th scope="col">Distance</th>
             <th scope="col">Burn Calory</th>
             <th scope="col">Date (yy-mm-dd)</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let item of workoutFormValues; let i = index">
+          <tr *ngFor="let item of workoutFormValues; 
+          let i = index" >
             <th scope="row">{{ i + 1 }}</th>
             <td>{{ item.workoutList }}</td>
             <td>

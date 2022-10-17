@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { WorkoutTypedControl } from '../Models/userInterface';
+import {
+  WorkoutTypedControl,
+  DropDownListTypedCheck,
+} from '../Models/userInterface';
 
 @Component({
   selector: 'app-workout-details',
@@ -13,6 +16,12 @@ export class WorkoutDetailsComponent implements OnInit {
   userObj: object;
   fName: string;
   tableShow: boolean = false;
+  dropDownItems: Array<DropDownListTypedCheck> = [
+    { value: 'cycling', name: 'Cycling' },
+    { value: 'swimming', name: 'swimming' },
+    { value: 'walking', name: 'walking' },
+  ];
+ 
 
   constructor() {}
 
@@ -30,5 +39,4 @@ export class WorkoutDetailsComponent implements OnInit {
     this.tableShow = true;
     this.workoutForm.reset();
   }
-
 }
