@@ -15,3 +15,4 @@ export interface WorkoutTypedControl{
     distance: FormControl<number>,
     calory:FormControl<number>
 }
+

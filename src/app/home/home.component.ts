@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
   userInfoCard: boolean = false;
   result: number | null;
 
-  constructor(private dataService: SendAndReceiveDataService) {}
+  constructor() {}
 
   ngOnInit(): void {
     this.userFrom = new FormGroup<userFormTypedControl>({
@@ -40,9 +40,8 @@ export class HomeComponent implements OnInit {
 
   onSubmit() {
     this.userInfo = this.userFrom.value;
-    console.log(this.userInfo)
     this.calcBMI();
-    this.userInfoCard = true;
+    this.userInfoCard = !this.userInfoCard;
     this.userFrom.reset();
   }
 
@@ -50,5 +49,4 @@ export class HomeComponent implements OnInit {
     this.result =
       this.userFrom.value.userWeight / (this.userFrom.value.userHeight * 2);
   }
- 
 }

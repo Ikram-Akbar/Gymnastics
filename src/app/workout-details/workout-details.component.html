@@ -94,8 +94,9 @@
         </button>
       </form>
     </div>
+
     <div class="col-md-8 mt-4">
-      <table class="table ">
+      <table class="table " *ngIf="tableShow">
         <thead>
           <tr class="text-primary">
             <th scope="col">Sl</th>
@@ -106,11 +107,11 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let item of workoutFormValue; let i = index">
+          <tr *ngFor="let item of workoutFormValues; let i = index">
             <th scope="row">{{ i + 1 }}</th>
             <td>{{ item.workoutList }}</td>
             <td>
-              {{ item.distance }}
+              {{ item.distance}}
               <span
                 class="text-bg-secondary fw-semibold badge rounded-pill ms-2"
               >
@@ -129,6 +130,9 @@
           </tr>
         </tbody>
       </table>
+      <div *ngIf="!tableShow">
+        <h2 class="text-center text-primary">No Data Found</h2>
+      </div>
     </div>
   </div>
 </div>
