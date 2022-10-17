@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { userFormTypedControl } from '../Models/userInterface';
+import { SendAndReceiveDataService } from '../send-and-receive-data.service';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +14,7 @@ export class HomeComponent implements OnInit {
   userInfoCard: boolean = false;
   result: number | null;
 
-  constructor() {}
+  constructor(private dataService: SendAndReceiveDataService) {}
 
   ngOnInit(): void {
     this.userFrom = new FormGroup<userFormTypedControl>({
@@ -39,6 +40,7 @@ export class HomeComponent implements OnInit {
 
   onSubmit() {
     this.userInfo = this.userFrom.value;
+    console.log(this.userInfo)
     this.calcBMI();
     this.userInfoCard = true;
     this.userFrom.reset();
@@ -48,4 +50,5 @@ export class HomeComponent implements OnInit {
     this.result =
       this.userFrom.value.userWeight / (this.userFrom.value.userHeight * 2);
   }
+ 
 }
